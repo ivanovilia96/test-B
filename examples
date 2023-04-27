@@ -1,0 +1,17 @@
+- go build если требуется
+ниже соответственно время таймаута дефолтного будет 3 (default value) так как он не указан
+- test-task.exe -maxMessagesInOneQueueCount=1 -maxQueuesCount=1 -port=8081
+
+# можно несколько там сообщений в очередь добавить а потом по 1 их получать, проверить максимальное кол-во очередей, сообщений в очереди, ожидание и во время этого пуш в очередь и что сообщение получится
+GET http://localhost:8080/queue/queue1arg?timeout=10
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+PUT http://localhost:8080/queue/queue1arg
+Accept: */*
+Cache-Control: no-cache
+
+{"message": "queue2arg message"}
+###
